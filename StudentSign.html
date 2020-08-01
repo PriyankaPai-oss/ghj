@@ -1,0 +1,228 @@
+<html>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+<script src="//geodata.solutions/includes/countrystatecity.js"></script>
+<body style="color: rgb(8, 146, 100);background-color:whitesmoke">
+    <form  action="/Send" method="post" name="RegForm" onsubmit="return ValidationForm()"> <!--/api/api/Send-->
+
+<p>
+<label> First Name<br>
+    <input type="textbox" name="firstName" required>
+</label> 
+</p>
+
+<p>
+<label>Last Name<br><input type="textbox" name="lastName" required><br>
+</label>
+</p>
+
+<p>
+<label>Email Address<br><input type="email" name="email" pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*(\.\w{2,})+$" required>
+
+</label>
+</p>
+<p>
+  <!-- <label> <select name="country" class="countries" id="countryId" >
+      <option value="">Select Country</option>
+  </select>
+  <select name="state" class="states" id="stateId" >
+      <option value="">Select State</option>
+  </select>
+  <select name="city" class="cities" id="cityId" >
+      <option value="">Select City</option>
+  </select>
+    </label> 
+    city -->
+    <label>
+    Country <input type="textbox" name="Country" id="Country"/><br></label>
+  <p> State<input type="textbox" name="state" id="state"/><br></p>
+<p>City<input type="textbox" name="City" id="City"/><br></p>
+    </p>
+<!-- <script>
+  var checked=[], unchecked=[];
+
+$('.country').change(function() {
+     if(this.checked){
+          checked.push(this.value);
+          unchecked.splice(this.value, 1);
+     }else{
+          unchecked.push(this.value);
+          checked.splice(this.value, 1);
+     }
+}).change();
+
+
+</script> -->
+<fieldset>
+<legend>Grade</legend>
+<p><label> <input type="radio" name="grade" id="grade" value="6" required>6th Grade</label></p>
+<p><label> <input type="radio" name="grade" id="grade" value="7" required>7th grade</label></p>
+<p><label> <input type="radio" name="grade" id="grade" value="8" required>8th Grade </label></p>
+</fieldset>
+
+<fieldset>
+<legend>Subjects</legend>
+<p><label> <input type="checkbox" name="subjects" value="English" >English</label></p>
+<p><label> <input type="checkbox" name="subjects" value="Maths" >Maths</label></p>
+<p><label> <input type="checkbox" name="subjects" value="Science" >Science </label></p>
+</fieldset>
+
+<script>
+  ('.subjects').change(function() {
+     if(this.checked){
+          checked.push(this.value);
+          unchecked.splice(this.value, 1);
+     }else{
+          unchecked.push(this.value);
+          checked.splice(this.value, 1);
+     }
+}).change();
+</script>
+
+
+<fieldset>
+    <legend>Reasons For Tutoring</legend>
+    <p><label> <input type="checkbox" name="reasonForTutor" id="reasonForTutor" value="Currently struggling at grade level" > Currently struggling at grade level</label></p>
+    <p><label> <input type="checkbox" name="reasonForTutor" id="reasonForTutor" value="Extra studies at grade level" >Extra studies at grade level</label></p>
+    <p><label> <input type="checkbox" name="reasonForTutor" id="reasonForTutor" value="Study ahead for next grade " >Study ahead for next grade </label></p>
+    <p><label> <input type="checkbox" name="reasonForTutor" id="reasonForTutor" value="Interested in learning advanced topics way above my grade level" >Interested in learning advanced topics way above my grade level</label></p>
+   
+    <script src="checkall.js"></script>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>Duration</legend>
+        <p><label> <input type="radio" name="duration" id="duration" value="1-3 months" required>1-3 months</label></p>
+        <p><label> <input type="radio" name="duration" id="duration" value="3-6 months" >3-6 months</label></p>
+        <p><label> <input type="radio" name="duration" id="duration" value="6-12 months" >6-12 months </label></p>
+        <p><label> <input type="radio" name="duration" id="duration" value="12+ months" > 12+ months </label></p>
+    </fieldset>
+
+
+<p>
+<label>Sessions Frequency<input type="textbox" name="sessionFreq" required> </label>
+
+
+</p>
+
+<fieldset>
+    <legend> Do any of these apply to you?</legend>
+    <p><label> <input type="checkbox" name="eligibilityForFreeTutor" value="One or more of my The student attends a Title 1 School " >One or more of my The student attends a Title 1 School</p>
+    <p><label> <input type="checkbox" name="eligibilityForFreeTutor" value="The student receives free lunch at school " >The student receives free lunch at school </label></p>
+    <p><label> <input type="checkbox" name="eligibilityForFreeTutor" value="The student receives reduced-price lunch at school" >The student receives reduced-price lunch at school </label></p>
+    <p><label> <input type="checkbox" name="eligibilityForFreeTutor" value="The student is a foster child" >The student is a foster child</label></p>
+    <p><label> <input type="checkbox" name="eligibilityForFreeTutor" value="The student is homeless" >The student is homeless</label></p>
+    <p><label> <input type="checkbox" name="eligibilityForFreeTutor" value="The family is on or qualifies for food stamps" >The family is on or qualifies for food stamps</label></p>
+    <p><label> <input type="checkbox" name="eligibilityForFreeTutor" value="Parents jobs are impacted by COVID" >Parents jobs are impacted by COVID</label></p>
+    <p><label> <input type="checkbox" name="eligibilityForFreeTutor" value="Other financial hardship" >Other financial hardship</label></p>
+   
+    <script src="checkall.js"></script>
+
+    </fieldset>
+
+    <input type="file" accept="image/*" name="prodImage" id="file" onchange="loadFile(event)" required>
+    <br>
+    <br><input type="submit" name="SubmitBtn" id="SubmitBtn">
+    
+  <br>
+  <img id="output" width="200" />
+  <p><input type="file"  accept="image/*" name="prodImage" id="prodImage"  onchange="loadFile(event)" style="display: none;"></p>
+  <p><label for="file" style="cursor: pointer;"></label></p>
+  <p><img id="output" width="200" /></p>
+  
+  <script>
+    $(document).ready(function () {
+      $('.gender').on('change', function () {
+          var radiosGender = document.getElementsByName('gender');
+         if(radiosGender.length==0){
+           alert("please check one option");
+         }
+      });
+  });
+  </script>
+  <script>
+  var loadFile = function(event) {
+    var image = document.getElementById('output');
+    image.src = URL.createObjectURL(event.target.files[0]);
+  };
+  </script>
+  <!-- <script>
+    $('.user-radio').change(function () {
+      $('.rad1 a').remove();
+      $('.user-radio:checked').body.append('.value');
+  });​
+  </script> -->
+  
+   <!-- <script>
+    var Anodes = document.getElementsByName("input:radio[name='gen']"),
+        AValue = Array.from(Anodes)
+           .filter(node => node.checked)
+           .map(node => node.value)
+           .pop();
+    console.log(AValue);
+  </script>  -->
+  
+  <!-- <script>
+   $("input:radio[name='optionsRadios']").filter(function(){
+     return $(this).val() === typdespal
+  }).prop( "checked", true);
+  
+    var previousBody = req.body
+    body: Object.assign(previousBody, {})
+    
+  });
+  
+  
+   </script>--> 
+  
+  
+   
+   <script>
+  $("#SubmitBtn").click(function (event) {
+    onsole.log("rrrrr");
+      event.preventDefault();
+      var searchIDs = $("#imgTable input:checkbox:checked").map(function () {
+          return $(this).val();
+      }).get();
+      console.log("selected::::" + searchIDs);
+      $.ajax({
+         url:'/Send',type:'post',
+         data:{searchid:searchIDs},
+         success:function(response){
+            console.log(response);
+         }
+      });
+  });
+    </script>  
+  
+   <script>
+  //   var radios = document.getElementsByName('rbtn');
+  //   var gender = '';
+  // for (var i = 0, length = radios.length; i < length; i++) {
+  //     if (radios[i].checked) {
+  //       gender = radios[i].value;
+  //     }
+      
+  // }
+  // </script> 
+  
+ <!-- <script>
+  // var appended = '';
+  // var ref=document.getElementsByName('input:radio[name="gen"]');
+  // $(ref).change(function() {
+  //   if ($(this).val() == 'Yes') {
+  //     $(appended).appendTo('body').add(ref.values);
+  //   } else {
+  //     $(appended).remove();
+  //   }
+  // });
+  // </script>  
+  <script>-->
+  
+  
+  
+  </script>
+  </form>
+</body>
+</html>
